@@ -22,4 +22,13 @@ class Postagem(models.Model):
     titulo = models.CharField(u'Título', max_length=50, blank=False, null=False)
     texto = models.TextField(u'Texto', blank=False, null=False)
     data = models.DateField(u'Data', auto_now_add=True)
-    autor = models.ForeignKey(User)
+    autor = models.ForeignKey(User, blank=False, null=False)
+
+
+class Evento(models.Model):
+    titulo = models.CharField(u'Título', max_length=50, blank=False, null=False)
+    descricao = models.TextField(u'Texto', blank=False, null=False)
+    descricao = models.URLField(u'Local', blank=False, null=False)
+    inicio = models.DateField(u'Data', blank=True, null=True)
+    termino = models.DateField(u'Data', blank=True, null=True)
+    autor = models.ForeignKey(User, blank=False, null=False)
