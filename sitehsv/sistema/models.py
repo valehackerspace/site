@@ -10,11 +10,11 @@ STATUS = (
     )
 
 
-class Projetos(models.Model):
+class Projeto(models.Model):
     nome = models.CharField(u'Projeto', max_length=50, blank=False, null=False)
     descricao = models.TextField(u'Descrição', blank=False, null=False)
     inicio = models.DateField(u'Data de Início', blank=True, null=True)
-    previsao_termino = models.DateField(label=u'Previsão de Término', blank=True, null=True)
+    previsao_termino = models.DateField(u'Previsão de Término', blank=True, null=True)
     status = models.SmallIntegerField(u'Status', choices=STATUS, blank=True, null=True)
 
 
