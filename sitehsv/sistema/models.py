@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+from django.contrib.auth.models import User
 
 STATUS = (
     (1, u'Proposta'),
@@ -12,6 +13,13 @@ STATUS = (
 class Projetos(models.Model):
     nome = models.CharField(u'Projeto', max_length=50, blank=False, null=False)
     descricao = models.TextField(u'Descrição', blank=False, null=False)
-    inicio = models.DateField(label=u'Data de Início', blank=True, null=True)
+    inicio = models.DateField(u'Data de Início', blank=True, null=True)
     previsao_termino = models.DateField(label=u'Previsão de Término', blank=True, null=True)
     status = models.SmallIntegerField(u'Status', choices=STATUS, blank=True, null=True)
+
+
+class Postagem(models.Model):
+    titulo = models.CharField(u'Título', max_length=50, blank=False, null=False)
+    texto = models.TextField(u'Texto', blank=False, null=False)
+    data = models.DateField(u'Data', auto_now_add=True)
+    autor = models.ForeignKey(User)
