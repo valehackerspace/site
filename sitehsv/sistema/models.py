@@ -29,6 +29,6 @@ class Evento(models.Model):
     titulo = models.CharField(u'Título', max_length=50, blank=False, null=False)
     descricao = models.TextField(u'Texto', blank=False, null=False)
     descricao = models.URLField(u'Local', blank=False, null=False)
-    inicio = models.DateField(u'Data', blank=True, null=True)
-    termino = models.DateField(u'Data', blank=True, null=True)
+    inicio = models.DateField(u'Início', blank=True, null=True)
+    termino = models.DateField(u'Término', blank=True, null=True)
     autor = models.ForeignKey(User, blank=False, null=False)
