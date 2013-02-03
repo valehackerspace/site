@@ -34,12 +34,15 @@ def projetos_list(request):
 
 
 def post(request, pk=None):
+    post = get_object_or_404(Postagem, pk=pk)
     return HttpResponse('Post')
 
 
 def evento(request, pk=None):
+    evento = get_object_or_404(Evento, pk=pk)
     return HttpResponse('Evento')
 
 
 def projeto(request, pk=None):
+    projeto = get_object_or_404(Projeto, pk=pk)
     return HttpResponse('Projeto')
