@@ -1,5 +1,9 @@
 # coding: utf-8
-from django.http import Http404, HttpResponse
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+from sistema.models import (Evento, Postagem, Projeto)
 
 
 def home(request):
@@ -7,6 +11,21 @@ def home(request):
 
 
 def eventos_list(request):
+    eventos = Evento.objects.all().order_by('inicio')
+
+    paginator = Paginator(eventos, 10)
+    page = request.GET.get('page')
+    try:
+        evento_list = paginator.page(page)
+    except PageNotAnInteger:
+        evento_list = paginator.page(1)
+    except EmptyPage:
+        evento_list = paginator.page(paginator.num_pages)
+
+    return render(request, "sistema/evento/eventos.html", {'evento_list': evento_list,
+        'is_paginated': paginator.num_pages > 1, 'page_obj': evento_list,
+        'paginator': paginator})
+
     return HttpResponse('Eventos')
 
 
