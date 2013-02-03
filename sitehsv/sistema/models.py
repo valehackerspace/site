@@ -32,3 +32,6 @@ class Evento(models.Model):
     inicio = models.DateField(u'Início', blank=True, null=True)
     termino = models.DateField(u'Término', blank=True, null=True)
     autor = models.ForeignKey(User, blank=False, null=False)
+
+    def __unicode__(self):
+        return self.titulo
